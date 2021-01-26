@@ -1,0 +1,88 @@
+
+@import '_colours';
+@import '../../bootstrap/scss/bootstrap.scss';
+@import '_mixins';
+@import '_maps';
+@import '_funcs';
+
+// [ GENERAL ]
+body {
+    $back: rgb(241, 241, 241);
+
+    margin: 0;
+    background-color: $back;
+}
+
+//: subheadings
+h5 {
+    margin-top: 2em;
+}
+
+.cont-custom {
+    h1, h2, h3, h4, h5, h6 { margin-bottom: 1.1em }
+}
+.accordion h2 {margin-bottom: 0;}
+h5.modal-title, .carousel h5 {margin: 0;}
+
+.carousel-caption {
+    background: rgba(32, 34, 37, .6);
+    max-width: 15vw;
+    margin: 0 auto;
+    border-radius: 6px;
+    @include blur(5px);
+}
+
+// [ PRELOADER ]
+ // hide / show > scrollbars
+body.preload { overflow: hidden; }
+body.loaded  { overflow: auto;   }
+ // hide > preloader
+.hidden      {opacity: 0; pointer-events: none;}
+ //: preloader settings
+div#preloader {   
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    background: $dblue;
+    transition: opacity 0.25s;
+    z-index: 9999;
+    
+    &::after {
+        $spins: 1 !global;
+
+        display: block;
+        content: '';
+        border: 3px solid $lblue;
+        width: 60px; height: 60px;
+        animation: preloader $spins*1.5s cubic-bezier(0.200, 0.000, 0.800, 1) infinite;
+        @include center;
+
+        $wh: (
+            s: 40px,
+            m: 50px,
+            l: 60px,
+            xl: 80px
+        ) !global;
+
+        @include mQ(map-keys($wh)) {
+            width: $sz; height: $sz;
+        }
+    }
+}
+
+// [@-ANIMATIONS]
+@keyframes preloader {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+        border-radius: 0;
+    }
+    50% {
+        border-radius: 100px;
+        border-color: $coral;
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg * $spins);
+        border-radius: 0;
+    }
+}
