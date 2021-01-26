@@ -1,0 +1,40 @@
+
+// [ MIXINS ]
+
+// set > width & height according to screen size
+@mixin mQ($sizes) {
+
+    @for $i from 1 through length($sizes) {
+
+        @if $i == length($sizes) {
+            // for intervals
+            @media screen and (min-width: getScreen(nth($sizes, length($sizes)))) {
+                $sz: map-get($wh, nth($sizes, length($sizes))) !global;
+                @content;
+            }
+        } @else {
+            // for > max size
+            @media screen and (min-width: getScreen(nth($sizes, $i))) and (max-width: getScreen(nth($sizes, $i+1))) {
+                $sz: map-get($wh, nth($sizes, $i)) !global;
+                @content;
+            }
+        }
+
+    }
+  
+}
+
+// center > element on the page
+@mixin center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// blur > background
+@mixin blur($v) {
+    backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    -khtml-backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}

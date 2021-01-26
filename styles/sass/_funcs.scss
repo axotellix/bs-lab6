@@ -1,0 +1,11 @@
+
+// [ FUNCTIONS ]
+
+//@ get > screen size breakpoints
+@function getScreen($s) {
+  @if map-has-key($screen, $s) {
+    @return map-get($screen, $s);
+  }
+
+  @return null;
+}
