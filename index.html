@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/css/styles-min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <title>Bootstrap</title>
+</head>
+<body class = 'preload'>
+    
+  <!-- =[ PRELOADER ]= -->
+  <div id = "preloader"></div>
+  <script>
+      let preloader = document.getElementById('preloader');
+
+      window.addEventListener('load', () => {
+          setTimeout(() => {
+            preloader.classList.add('hidden');
+            document.body.className = 'loaded';
+          }, 1000);
+      });
+  </script>
+
+
+  <!-- [ MAIN ] -->
+  <div class="container-fluid p-5 bg-dark text-light mb-0">
+      
+      <div class="container col-10">
+          <h1>Оптимизация изображений</h1>
+          <h6 class = 'mb-4'>принципы оптимизации изображений для веб-страниц</h6>
+
+          <button type="button" data-bs-toggle = 'modal' data-bs-target = '#mod-registration' class="btn btn-primary">Регистрация</button>
+          <button type="button" data-bs-toggle = 'modal' data-bs-target = '#mod-entrance' class="btn btn-success mx-1">Вход</button>
+      </div>
+      
+  </div>
+
+  <!-- [ modals ] -->
+  <!-- modal: entrance -->
+  <div id = 'mod-entrance' class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="label-entrance">Вход</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for = "login" class = "col-form-label">Логин:</label>
+              <input type = "text" class = "form-control" id = "login">
+            </div>
+            <div class="mb-3">
+              <label for="pass" class="col-form-label">Пароль:</label>
+              <input type = "password" class = "form-control" id = "pass">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary">Вход</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal: registration -->
+  <div id = 'mod-registration' class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="label-reg">Регистрация</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for = "name" class = "col-form-label">ФИО:</label>
+              <input type = "text" class = "form-control" id = "name">
+            </div>
+            <div class="mb-3">
+              <label for = "email" class = "col-form-label">Email:</label>
+              <input type = "email" class = "form-control" id = "email">
+            </div>
+            <div class="mb-3">
+              <label for = "login-reg" class = "col-form-label">Логин:</label>
+              <input type = "text" class = "form-control" id = "login-reg">
+            </div>
+            <div class="mb-3">
+              <label for="pass-reg" class="col-form-label">Пароль:</label>
+              <input type = "password" class = "form-control" id = "pass-reg">
+            </div>
+            <div class="mb-3">
+              <label for="pass-reg-check" class="col-form-label">Повторите пароль:</label>
+              <input type = "password" class = "form-control" id = "pass-reg-check">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary">Продолжить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [ navbar ] -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-4">
+      <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mx-auto mb-2 mb-lg-0">
+              <!-- nav link -->
+              <li class="nav-item mx-lg-1">
+                <a class="nav-link active" aria-current="page" href="#intro">Введение</a>
+              </li>
+              <!-- nav link -->
+              <li class="nav-item mx-lg-1">
+                <a class="nav-link" href="#basic-opt">Базовая оптимизация</a>
+              </li>
+              <!-- nav link -->
+              <li class="nav-item mx-lg-1">
+                <a class="nav-link" href="#img-weight">Вес изображения</a>
+              </li>
+              <!-- nav link -->
+              <li class="nav-item mx-lg-1">
+                <a class="nav-link" href="#resolution">Разрешение</a>
+              </li>
+              <!-- nav link -->
+              <li class="nav-item mx-lg-1">
+                <a class="nav-link" href="#opt-methods">Методы оптимизации</a>
+              </li>
+              <li class="nav-item dropdown mx-lg-4">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Полный список
+                </a>
+              <ul class="dropdown-menu p-1" aria-labelledby="navbarDropdown" style = 'width: 200px; max-height: 50vh; overflow-y: auto;'>
+                  <!-- MENU WITH SUBMENU -->
+                  <!-- nav link -->
+                  <li class="nav-item mx-lg-1">
+                    <a class="nav-link active" aria-current="page" href="#intro">Введение</a>
+                    <ul>
+                      <li class="sublink nav-item mx-lg-1">
+                        <a class="nav-link" href="#overweight">Графика остаётся главной причиной ожирения веб-страниц</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- nav link -->
+                  <li class="nav-item mx-lg-1">
+                    <a class="nav-link" href="#basic-opt">Базовая оптимизация</a>
+                    <ul>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#format">Какой тип файлов использовать?</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- nav link -->
+                  <li class="nav-item mx-lg-1">
+                    <a class="nav-link" href="#img-weight">Вес изображения</a>
+                  </li>
+                  <!-- nav link -->
+                  <li class="nav-item mx-lg-1">
+                    <a class="nav-link" href="#resolution">Разрешение</a>
+                  </li>
+                  <!-- nav link -->
+                  <li class="nav-item mx-lg-1">
+                    <a class="nav-link" href="#opt-methods">Методы оптимизации</a>
+                    <ul>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#shrink-img">Сжатие изображения</a>
+                      </li>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#adaptive-img">Адаптивные изображения</a>
+                      </li>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#gzip">Сжатие Сжатие на уровне сервера (GZIP)</a>
+                      </li>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#lazy-loading">Принцип ленивой загрузки - Lazy loading</a>
+                      </li>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#vectorise">Переведите простые элементы в вектор</a>
+                      </li>
+                      <li class="nav-item mx-lg-1">
+                        <a class="nav-link" href="#finally">И наконец - проверяйте страницы через PageSpeed Insight</a>
+                      </li>
+                    </ul>
+                  </li>
+              </ul>
+              </li>
+          </ul>
+          </div>
+      </div>
+  </nav>
+
+  <!-- [ content: intro ] -->
+  <div class = "cont-custom container col-10 bg-white mx-auto p-5">
+
+      <h1 id = 'intro'>Введение.</h1>
+      <h5 id = 'overweight'>Графика остаётся главной причиной ожирения веб-страниц</h5>
+      <p>
+          Изображения составляют огромную долю интернет-трафика. Согласно HTTP Archive, 60% объёма веб-страниц — это графика в форматах JPEG, PNG и GIF. По состоянию на июль 2017 года изображения составляли 1,7 МБ на средней веб-странице объёмом 3,0 МБ.
+      </p>
+
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Сравнение весов различных составляющих веб-страницы
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse hide" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Тип</th>
+                    <th scope="col">Килобайт</th>
+                    <th scope="col">% от общего веса</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Видео</th>
+                    <td>2378,5</td>
+                    <td>55,31%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Изображения</th>
+                    <td>1212,4</td>
+                    <td>28,19%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Javascript</th>
+                    <td>449,5</td>
+                    <td>10,45%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Шрифты</th>
+                    <td>134,6</td>
+                    <td>3,13%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">CSS</th>
+                    <td>98,7</td>
+                    <td>2,30%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">HTML</th>
+                    <td>25,7</td>
+                    <td>0,60%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Остальное</th>
+                    <td>0,7</td>
+                    <td>0,02%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <img class = 'img-fluid rounded mx-auto d-block' src="imgs/survey.jpg" alt="survey">
+      <p>
+          Эксперимент Тэмми Эвертса доказал, что добавление изображений на страницу или увеличение существующих изображений повышает коэффициент конверсии (процент посетителей, которые становятся клиентами — прим. пер.). Так что картинки никуда не денутся — вот почему важно вложиться в эффективную стратегию по их сжатию.
+      </p>
+      <p>
+          Оптимизация изображений включает ряд мер. Выбор зависит от того, какую потерю качества считать приемлемой.
+      </p>
+      <img class = 'img-fluid rounded mx-auto d-block' src="imgs/optimize.jpg" alt="optimize">
+
+  </div>
+
+  <!-- [ content: basic optimisation ] -->
+  <div class = "cont-custom container col-10 bg-white mx-auto p-5">
+
+    <h1 id = 'basic-opt'>Базовая оптимизация.</h1>
+    <h5 id = 'format'>Какой тип файлов использовать?</h5>
+    <p>
+      Изображения бывают двух типов: векторные и растровые. У каждого есть как свои минусы, так и плюсы. И первый шаг в оптимизации картинок для сайта заключается в выборе верного типа и формата. Какой же тип использовать зависит от каждой конкретной ситуации.
+    </p>
+    <h6>Растровые изображения</h6>
+    <p>
+      Состоят из пикселей и являются наиболее распространенным типом в интернете. Отлично подходят для передачи любой графической информации. Для веба используют три основных формата:
+      <ul>
+        <li><strong>JPG (JPEG)</strong> — идеален для фотореалистичных сцен и объектов. Если у вас изображен пейзаж, портрет, фото товара, собака — в общем, что угодно с большим количеством цветов, то JPG — лучший выбор.</li>
+        <li><strong>PNG 8/24</strong> — второй по популярности формат в Интернет. Отлично подходит для сохранения объектов с небольшим количеством цветов. Например, текст, чертежи, значки, графики и диаграммы. Чем меньше цветов используется — тем меньше будет вес. Важно заметить, что в отличии от JPG, у PNG есть поддержка прозрачности.</li>
+        <li><strong>GIF</strong> пользовался популярностью в вебе лет 10 назад, но со временем его вытеснил PNG из-за лучшей оптимизации. Поэтому сейчас используется редко. Отличительная особенность гифов — это возможность анимации.</li>
+      </ul>
+    </p>
+    <p>
+      Чтобы вы лучше понимали разницу, сохраним две фотографии в разных разрешениях и сравним их вес. В качестве первой возьмем мотоцикл с разрешением 1000×1000 px и сохраним в разных форматах:
+    </p>
+    <img class = 'img-fluid rounded mx-auto d-block' src="imgs/formats-comparison.png" alt="formats-comparison">
+    <p>
+      Как видно из примера, самым оптимальным (с точки зрения размера файла) ожидаемо оказался JPG с 443 кб. Другие форматы получились значительно «тяжелее»: PNG на 130 кб (+29,34%), а GIF на 235 кб (+53,04%). Именно столько нам удалось «сэкономить», выбрав наиболее подходящий формат.
+    </p>
+    <p>
+      Тест был бы неточным, если бы мы не попробовали другой тип — фотографию, где мало цветов. Это будет небольшая часть прототипа Landing page, который мы делали для нашего клиента. Разрешение тоже 1000×1000 px:
+    </p>
+    <img class = 'img-fluid rounded mx-auto d-block' src="imgs/formats-comparison2.png" alt="formats-comparison">
+    <p>
+      И тут закономерно побеждает PNG с 21 кб. Для 1000×1000 px это совсем мало, хотя и не предел. GIF оказался вторым с лишними 69 кб (+319%). JPG рассчитан на реалистичные фотографии и со схемами и чертежами справляется плохо. Поэтому он показывает худший результат в этой ситуации — 253 кб (+1204%) сверх минимального.
+
+      Существуют и другие форматы, такие как JPEG XR и WebP. Но мы их рассматривать не будем, так как на данный момент они не поддерживаются всеми браузерами.
+    </p>
+    <br>
+    <strong>Что выбрать:</strong>
+    <p>
+      Чтобы вам было проще ориентироваться, вот наглядная инструкция какой формат выбрать:
+    </p>
+    <figure class="figure mx-auto d-block">
+      <img class = 'img-fluid col-6 rounded mx-auto d-block' src="imgs/guide.png" alt="formats guide">
+      <figcaption class="figure-caption text-center">Гид по выбору формата изображения</figcaption>
+    </figure>
+
+    <h6>Векторные изображения</h6>
+    <p>
+      Формат, который появился в вебе относительно недавно. Векторные файлы описываются математическими формулами и, как следствие, могут масштабироваться без потери качества. Растр не может похвастаться таким преимуществом, однако возможности вектора весьма ограничены.
+    </p>
+    <p>
+      Наиболее распространенным векторным форматом является SVG. Такие файлы обычно используют для логотипов, иконок, текста и несложных иллюстраций. И вот почему:
+    </p>
+    <ul>
+      <li>Как было указано выше, у SVG нету такого понятия как «разрешение». Файлы этого формата можно масштабировать как в браузере через стили, так и в редакторе (например, Adobe Illustrator).</li>
+      <li>Поисковые системы индексируют SVG наравне с растровыми форматами, так что про SEO можно не беспокоиться.</li>
+      <li>Как правило, SVG «весят» меньше, чем растровые форматы. А это положительно сказывается на скорости загрузки страницы.</li>
+    </ul>
+  </div>
+
+  <!-- [ content: image weight ] -->
+  <div class = "cont-custom container col-10 bg-white mx-auto p-5">
+
+    <h1 id = 'img-weight'>Вес изображения.</h1>
+    <p>
+      Вес формируется исходя из количества пикселей фотографии. Допустим, один пиксель весит 4 байта. Тогда картинка 10х10 пикселей будет занимать 400 байт или 0,4 килобайте. По аналогии 1000х1000 = 4 000 000 байт или 4 мегабайт.
+    </p>
+    <p>
+      Фото такого разрешения вполне может быть на странице, но 4 мегабайта — это слишком много для сайта. Нужно уменьшить вес изображения и первично это можно сделать, используя опцию «Save for web» в редакторе Adobe Photoshop.
+    </p>
+    <img class = 'img-fluid col-6 rounded mx-auto d-block' src="imgs/quality.jpg" alt="decrease quality">
+    <p>
+      ак видно на примере выше, выбрав верный формат и поэкспериментировав с показателем Quality (качество) можно сократить вес картинки 1000×1000 до 0,274 мб без видимой потери качества.
+    </p>
+  </div>
+
+  <!-- [ content: image resolution ] -->
+  <div class = "cont-custom container col-10 bg-white mx-auto p-5">
+
+    <h1 id = 'resolution'>Разрешение.</h1>
+    <p>
+      Оно показывает сколько пикселей в ширину и в высоту изображение. Как мы поняли из предыдущей главы, чем больше пикселей — тем больше вес. Поэтому выбирать в каком разрешении сохранить фото нужно исходя из того, в каком разрешении оно будет на сайте. Если у вас под картинку выделен блок 500х500 пикселей, то и сохранять нужно именно в таком разрешении.
+    </p>
+    <p>
+      Как же проверить какое разрешение необходимо? Просто посмотрите исходный код того контейнера, в который вы планируете загрузку. Сделать это можно через просмотр исходного кода в браузере:
+    </p>
+    <img class = 'img-fluid col-6 rounded mx-auto d-block' src="imgs/check-resolution.png" alt="check resolution">
+    <p>
+      На скриншоте видна эта проблема. Размер блока для картинки 750×500 пикселей. Но в него была загружена фотография с разрешением 5760×3840 пикселей. Из предыдущей главы не сложно посчитать сколько лишних килобайт (даже мегабайт) загружает пользователь просто так. Естественно, Google PageSpeed Insights оценил эту страницу крайне низко именно из-за такой работы с фотографией:
+    </p>
+    <img class = 'img-fluid col-6 rounded mx-auto d-block' src="imgs/googlePSI.png" alt="Google PageSpeed Insights">
+  </div>
+
+  <!-- [ content: optimisation methods ] -->
+  <div class = "cont-custom container col-10 bg-white mx-auto p-5 mb-5">
+
+    <h1 id = 'opt-methods'>Методы оптимизации.</h1>
+    <h5 id = 'shrink-img'>Сжатие изображения</h5>
+    <p>
+      Уменьшение веса изображения без потери качества.
+    </p>
+    <h6>Сервисы оптимизации</h6>
+    <img class = 'img-fluid col-6 rounded mx-auto d-block' src="imgs/optimisation-services.png" alt="optimisation services">
+    <ul>
+      <li><a href="https://tinypng.com/"><strong>TinyPNG</strong></a> — бесплатный, за раз обрабатывает до 20 файлов до 5 мб каждый.</li>
+      <li><a href="https://imagecompressor.com/"><strong>Optimizilla</strong></a> — бесплатный. Удобно, что можно настраивать качество сжатия, и сразу сравнить результат с оригиналом.</li>
+      <li><a href="https://kraken.io/web-interface"><strong>Kraken.io</strong></a> — есть бесплатная и платная (от 5$ в месяц) версии. Удобный интерфейс с широкими настройками даже в бесплатной версии. Можно загружать фото одним архивом, а в платной версии оптимизировать все картинки по ссылке.</li>
+      <li><a href="https://imagify.io/optimizer/"><strong>Imagify.io</strong></a> — бесплатная и платная (от 5$) версии. Ограниченный набор настроек компенсируется наличием в бесплатной версии оптимизатора всех фото на странице.</li>
+    </ul>
+
+    <!-- slider: optimisation services -->
+    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="imgs/tinypng.jpg" class="d-block w-100" alt="tiny png">
+          <div class="carousel-caption p-2 d-md-block">
+            <h5 class = 'text-light'>Tiny PNG</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="imgs/optimizilla.png" class="d-block w-100" alt="optimizilla">
+          <div class="carousel-caption p-2 d-md-block">
+            <h5 class = 'text-light'>Optimizilla</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="imgs/imagify.png" class="d-block w-100" alt="imagify">
+          <div class="carousel-caption p-2 d-md-block">
+            <h5 class = 'text-light'>Imagify</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="imgs/kraken.png" class="d-block w-100" alt="kraken">
+          <div class="carousel-caption p-2 d-md-block">
+            <h5 class = 'text-light'>Kraken</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+
+    <h5 id = 'adaptive-img'>Адаптивные изображения</h5>
+    <p>
+      При адаптивной верстке может возникнуть проблема, когда изображение размером 800x800 пикселей будет сжиматься при просмотре с устройства, экран которого меньше 800px. Отсюда возникает проблема: загрузка лишних килобайтов.
+    </p>
+    <p>
+      Решением в такой ситуации будут адаптивные изображения. По сути, это несколько версий в разных разрешениях. Как правило, они создаются автоматически и сразу под каждый тип устройства.
+    </p>
+    <p>
+      Технически это реализуется при помощи атрибута srcset тега <img>. Он говорит браузеру какую версию загружать под какое разрешение. Синтаксис выглядит так:
+    </p>
+    <pre class="hljs" style="display: block; overflow-x: auto; background: rgb(45, 45, 45); color: rgb(204, 204, 204); padding: 0.5em;">&lt;<span class="hljs-selector-tag" style="color: rgb(204, 153, 204);">img</span> src=”.../photo.png” srcset=”ptoho-small<span class="hljs-selector-class" style="color: rgb(242, 119, 122);">.png</span> <span class="hljs-number" style="color: rgb(249, 145, 87);">320</span>w, photo-middle<span class="hljs-selector-class" style="color: rgb(242, 119, 122);">.png</span> <span class="hljs-number" style="color: rgb(249, 145, 87);">768</span>w, photo-big<span class="hljs-selector-class" style="color: rgb(242, 119, 122);">.png</span> <span class="hljs-number" style="color: rgb(249, 145, 87);">800</span>w”&gt;</pre>
+
+    <h5 id = 'gzip'>Сжатие на уровне сервера (GZIP)</h5>
+    <p>
+      <strong>GZIP</strong> — это архивирование на стороне сервера и разархивирование на стороне браузера. Как устроена данная технология:
+    </p>
+    <ol>
+      <li>На вашем сервере размещен файл весом в 100 кб. Допустим, какая-то картинка.</li>
+      <li>GZIP её архивирует до 10 кб.</li>
+      <li>На страницу заходит посетитель.</li>
+      <li>Сервер отправляет браузеру заархивированную версию в 10 кб.</li>
+      <li>Браузер её скачивает, возвращает исходный вид в 100 кб и показывает посетителю.</li>
+    </ol>
+  
+    <h5 id = 'lazy-loading'>Принцип ленивой загрузки - Lazy loading</h5>
+    <p>
+      Lazy loading (ленивая или отложенная загрузка) — это когда браузер загружает информацию (картинки, видео, карту и т.п.) только тогда, когда это действительно нужно. То есть при переходе на страницу сперва подгружаются только те элементы, которые находятся в видимой области. Элементы за пределами экрана загружаются лишь тогда, когда посетитель долистает до них.
+    </p>
+
+    <h5 id = 'vectorise'>Переведите простые элементы в вектор</h5>
+    <p>
+      Формат SVG и его преимущества описаны выше. Многие сайты сейчас переходят на вектор для логотипов, иконок и других простых элементов. И это не удивительно, ведь SVG сохраняет четкость при любом разрешении и поддерживается всеми современными браузерами. А за счет масштабируемости нет необходимости в использовании srcset, так как такие картинки подстраиваются под разрешение пользователя без потерь качества.
+    </p>
+
+    <h5 id = 'finally'>И наконец - проверяйте страницы через PageSpeed Insight</h5>
+    <p>
+      После внесения всех изменений в изображения вашей страницы обязательно сделайте повторный тест и убедитесь, что этих действий было достаточно. Да, PageSpeed учитывает многие факторы, но пункта про картинки там быть не должно.
+    </p>
+    <img class = 'img-fluid rounded mx-auto d-block' src="imgs/googlePSI-optimized.png" alt="image optimized">
+
+  </div>
+
+
+  <!-- [ MAIN ] -->
+  <div class="container-fluid bg-dark py-4 px-0 m-0">
+
+    <div class="container col-10">
+      <h5 class = 'm-0 my-1'>Developed with Bootstrap 5 | 2021</h5>
+    </div>
+    
+  </div>
+
+
+  <!-- =[ SCRIPTS ]= -->
+  <script>
+
+    window.addEventListener('scroll', () => {
+      sessionStorage.scrollTop = this.scrollTop;
+    });
+    window.addEventListener('load', () => {
+      this.scrollTop = sessionStorage.scrollTop;
+    });
+
+    let links = document.getElementsByClassName('nav-link');
+
+    Object.keys(links).forEach(elem => {
+      links[elem].addEventListener('click', () => {
+        Object.keys(links).forEach(elem => {
+          links[elem].classList.remove('active');
+        });
+        links[elem].classList.add('active');
+      });
+    });
+
+  </script>
+
+  </body>
+</html>
